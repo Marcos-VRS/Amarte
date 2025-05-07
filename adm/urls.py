@@ -8,4 +8,5 @@ app_name = "adm"
 urlpatterns = [
     # Index
     path("", views.index, name="index"),
+    path("Resumo/", views.summary, name="summary"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
