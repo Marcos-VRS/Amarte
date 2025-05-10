@@ -9,4 +9,8 @@ urlpatterns = [
     # Index
     path("", views.index, name="index"),
     path("Resumo/", views.summary, name="summary"),
+    path("Registros/", views.register, name="register"),
+    path("Financeiro/", views.finance, name="finance"),
+    path("Calendário/", views.calendar, name="calendar"),
+    path("Mensagens/", views.messages, name="messages"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

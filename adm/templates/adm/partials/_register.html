@@ -1,0 +1,21 @@
+<div>
+    <h1 class="medievalsharp-large">Registros</h1>
+    <label for="search-register" class=" medievalsharp-regular">Pesquisar:</label>
+    <input type="text" id="search-register" placeholder="Buscar..." class=" medievalsharp-regular">
+
+
+    {% for register in all_registers %}
+        <div class="register medievalsharp-regular" data-id="{{ register.id }}">
+            <h2>{{ register.name }}</h2>
+            <button class="btn-edit" data-id="{{ register.id }}">Editar</button>
+            <button class="btn-delete" data-id="{{ register.id }}">Excluir</button>
+        </div>
+    
+    
+    {% endfor %}
+
+    <div>
+
+    </div>
+
+</div>

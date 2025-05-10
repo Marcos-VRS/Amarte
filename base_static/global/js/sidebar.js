@@ -4,7 +4,7 @@ document.querySelectorAll('.btn-menu').forEach(button => {
 
         fetch(url)
             .then(response => {
-                if (!response.ok) throw new Error('Erro ao carregar a partial');
+                if (!response.ok) throw new Error('Erro ao carregar a tela');
                 return response.text();
             })
             .then(html => {

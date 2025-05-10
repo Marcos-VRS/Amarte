@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <title>Resumo</title>
     <link rel="stylesheet" href="{% static 'global/css/menu.css' %}">
-    <link rel="stylesheet" href="{% static 'global/css/fontes.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/_register.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
     <div class="container">
         <nav id="sidebar" class="sidebar">
-            <button id="toggle-btn">&#9776;</button>
             <ul class="menu">
 
                 <li class="menu-item">
@@ -23,25 +23,25 @@
                 </li>
 
                 <li class="menu-item">
-                    <button class="btn-menu">
+                    <button class="btn-menu" data-url = "{% url "adm:register" %}">
                         <i class="fa-solid fa-book"></i><span class="label medievalsharp-regular">Registros</span>
                     </button>
                 </li>
 
                 <li class="menu-item">
-                    <button class="btn-menu">
+                    <button class="btn-menu" data-url = "{% url "adm:finance" %}">
                         <i class="fa-solid fa-coins"></i><span class="label medievalsharp-regular">Financeiro</span>
                     </button>
                 </li>
 
                 <li class="menu-item">
-                    <button class="btn-menu">
+                    <button class="btn-menu" data-url = "{% url "adm:calendar" %}">
                         <i class="fa-solid fa-calendar-days"></i><span class="label medievalsharp-regular">Calendário</span>
                     </button>
                 </li>
 
                 <li class="menu-item">
-                    <button class="btn-menu">
+                    <button class="btn-menu" data-url = "{% url "adm:messages" %}">
                         <i class="fa-solid fa-message"></i><span class="label medievalsharp-regular">Mensagens</span>
                     </button>
                 </li>
