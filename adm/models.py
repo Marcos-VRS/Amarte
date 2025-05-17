@@ -1,7 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Register(models.Model):
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="registers",
+        default="1",
+    )
     DOCUMENT_TYPE_CHOICES = [
         ("CPF", "CPF"),
         ("CNPJ", "CNPJ"),

@@ -11,7 +11,7 @@ from adm.utils import *
 def add_register_view(request):
     try:
         data = json.loads(request.body)
-        registro = create_register(data)
+        registro = create_register(data, request.user)
         return JsonResponse({"status": "success", "id": registro.id})
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)}, status=400)

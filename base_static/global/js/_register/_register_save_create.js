@@ -1,7 +1,9 @@
 function submitRegisterForm(event) {
     event.preventDefault();
 
+    const body = document.querySelector("body");
     const data = {
+        owner: body.getAttribute("data-user-id"),
         category: document.getElementById("add-category").value,
         name: document.getElementById("add-name").value,
         birth_date: document.getElementById("add-bd").value,
@@ -13,6 +15,8 @@ function submitRegisterForm(event) {
 
     };
     console.log("Dados do formulário:", data);
+    console.log("OWNER:", data.owner)
+
 
     fetch("/api/add-register/", {
         method: "POST",

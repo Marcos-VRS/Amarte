@@ -1,8 +1,7 @@
 from adm.models import Register
 
 
-def create_register(data):
-
+def create_register(data, owner):
     return Register.objects.create(
         name=data.get("name"),
         phone=data.get("phone"),
@@ -12,6 +11,7 @@ def create_register(data):
         adress=data.get("adress"),
         observations=data.get("observations"),
         category=data.get("category"),
+        owner=owner,  # <-- aqui sim estamos salvando corretamente
     )
 
 

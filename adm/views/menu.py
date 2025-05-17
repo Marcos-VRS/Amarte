@@ -9,6 +9,8 @@ from adm.models import Register
 @login_required(login_url="adm:login")
 def index(request):
     username = request.user.username
+    username_id = request.user.id
+    print(f"\nUsername ID:{username_id}\n")
     print(f"\nUsername:{username}\n")
 
     context = {username}
@@ -29,8 +31,11 @@ def summary(request):
 def register(request):
     username = request.user.username
 
-    all_registers = Register.objects.all().order_by("-created_at")
+    all_registers = (
+        Register.objects.all().order_by("-created_at").filter(owner=request.user.id)
+    )
     print(f"\nAll registers:{all_registers}\n")
+    print(f"\nUser id:{request.user.id}\n")
 
     return render(
         request,

@@ -5,6 +5,7 @@ from .models import Register
 class RegisterAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "owner",
         "birth_date",
         "phone",
         "document_type",
@@ -12,12 +13,13 @@ class RegisterAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    list_filter = ("document_type", "category", "created_at")
+    list_filter = ("document_type", "category", "created_at", "owner")
 
-    search_fields = ("name", "birth_date", "document")
+    search_fields = ("name", "owner", "birth_date", "document")
 
     fields = (
         "name",
+        "owner",
         "birth_date",
         "phone",
         "document_type",
