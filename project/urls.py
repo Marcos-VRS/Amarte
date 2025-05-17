@@ -20,6 +20,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("adm.urls")),  # inclui URLs do app "gurps"
-    path("accounts/", include("allauth.urls")),  # adiciona todas as rotas do allauth
+    path("", include("adm.urls")),
+    path(
+        "oauth/", include("social_django.urls", namespace="social")
+    ),  # Login with Google
 ]

@@ -6,7 +6,7 @@ from django.urls import reverse
 from adm.models import Register
 
 
-# @login_required(login_url="adm:login")
+@login_required(login_url="adm:login")
 def index(request):
     username = request.user.username
 
