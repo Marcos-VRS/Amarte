@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resumo</title>
+    <link rel="stylesheet" href="{% static 'global/css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/_register.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <ul class="menu">
+
+                <li class="menu-item">
+                    <button class="btn-menu" data-url = "{% url "adm:summary" %}">
+                        <i id="btn-home" class="fa-solid fa-house"></i><span class="label medievalsharp-regular">Início</span>
+                    </button>
+                </li>
+
+                <li class="menu-item">
+                    <button class="btn-menu" data-url = "{% url "adm:register" %}">
+                        <i class="fa-solid fa-book"></i><span class="label medievalsharp-regular">Cadastro</span>
+                    </button>
+                </li>
+
+                <li class="menu-item">
+                    <button class="btn-menu" data-url = "{% url "adm:finance" %}">
+                        <i class="fa-solid fa-coins"></i><span class="label medievalsharp-regular">Financeiro</span>
+                    </button>
+                </li>
+
+                <li class="menu-item">
+                    <button class="btn-menu" data-url = "{% url "adm:calendar" %}">
+                        <i class="fa-solid fa-calendar-days"></i><span class="label medievalsharp-regular">Calendário</span>
+                    </button>
+                </li>
+
+                <li class="menu-item">
+                    <button class="btn-menu" data-url = "{% url "adm:messages" %}">
+                        <i class="fa-solid fa-message"></i><span class="label medievalsharp-regular">Mensagens</span>
+                    </button>
+                </li>
+
+            </ul>
+        </nav>
+
+        <main class="main-content ">
+            {% include "adm/partials/_summary.html" %}
+        </main>
+    </div>
+
+    <script src="{% static 'global/js/sidebar.js' %}"></script>
+    <script src="{% static 'global/js/_register/modal.js' %}"></script>
+    <script src="{% static 'global/js/_register/_register_filter.js' %}"></script>
+    <script src="{% static 'global/js/_register/_register_save_create.js' %}"></script>
+    <script src="{% static 'global/js/_register/_register_save_update.js' %}"></script>
+    <script src="{% static 'global/js/_register/_register_delete.js' %}"></script>
+</body>
+</html>

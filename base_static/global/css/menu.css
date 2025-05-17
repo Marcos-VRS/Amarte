@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #240B1D;
+    --faded-primary-color: #240b1d4d;
+    --white-color: #ffffffe8;
+    --light-gray-color: #eeeeee3d;
+    --faded-black-color: rgba(0, 0, 0, 0.534);
+    --faded-thin-black-color: rgba(0, 0, 0, 0.233);
+    --white-gray-color: #e2dee2;
+    --orange: rgba(126, 58, 3, 0.986);
+    --blue: #24428f;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.btn-menu {
+    all: unset;
+    cursor: pointer;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 180px;
+    transition: width 0.3s ease;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    transition: width 0.3s ease;
+}
+
+#toggle-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    padding: 15px 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--faded-primary-color);
+}
+
+.sidebar .menu li span {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Estado colapsado: esconde com transição */
+.sidebar.collapsed .menu li span {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+    pointer-events: none;
+
+}
+
+.label {
+    margin-left: 1rem;
+
+}
+
+
+.btn-menu:hover .label {
+    color: var(--orange);
+
+}
+
+
+.btn-menu:hover i {
+    color: var(--orange);
+    transition: color 0.2s ease, transform 0.2s ease;
+}

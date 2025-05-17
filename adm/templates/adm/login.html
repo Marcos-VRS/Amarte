@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="{% static 'global/css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/font.css' %}">
+
+</head>
+
+<body>
+<a href="{% url 'social:begin' 'google-oauth2' %}">Login com Google</a>
+
+</body>
+</html>

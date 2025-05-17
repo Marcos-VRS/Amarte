@@ -1,0 +1,150 @@
+<div>
+    <h1 class="medievalsharp-large">Registros</h1>
+    <button class="btn-add medievalsharp-mini" onclick="openWindow('add')">Adicionar</button><br>
+    <label for="search-register" class="medievalsharp-regular">Pesquisar:</label>
+    <input type="text" id="search-register" placeholder="Buscar..." class="medievalsharp-regular">
+    
+    <div class="grid-container">
+        {% for register in all_registers %}
+            <div class="register medievalsharp-regular" data-id="{{ register.id }}">
+                <h2 class="register-name">{{ register.name }}</h2>
+                <h3>{{ register.category}}</h3>
+                <h4>{{ register.phone }}</h4>
+                <button onclick="openWindow('edit',this)" class="btn-edit medievalsharp-mini" data-name="{{register.name}}" data-id="{{ register.id }}">Editar</button>
+                <button onclick="openWindow('delete',this)" class="btn-delete medievalsharp-mini" data-name="{{register.name}}" data-id="{{ register.id }}">Excluir</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Modal window : ADD -->
+<div id="window-add" class="window hidden">
+    <div class="window-content">
+        
+        <button class="btn-close" onclick="closeWindow()">×</button>
+        <h2>ADICIONAR REGISTRO</h2>
+
+        <form method="POST" action="{% url "adm:add_register" %}" id="add-form">
+            {% csrf_token %}
+            
+            <input type="hidden" name="idadd" id="add-id">
+
+            <label for="add-category">*Categoria:</label>
+            <select id="add-category" name="categoryadd" required>
+                <option value="">Selecione...</option>
+                <option value="Alunos">Alunos</option>
+                <option value="Professores">Professores</option>
+                <option value="Fornecedores">Fornecedores/Prestador de serviço</option>
+            </select>
+
+            <label for="add-name">*Nome:</label>
+            <input type="text" id="add-name" name="nameadd" maxlength="100" required>
+
+            <label for="add-bd" >Data de Nascimento:</label>
+            <input type="date" id="add-bd" name="bdadd" >
+
+            <div class="phone-container">
+                <label for="add-ddd">DDD:</label>
+                <input type="tel" id="add-ddd" name="dddadd" maxlength="2" value="84" required>
+                
+                <label for="edit-phone">Telefone:</label>
+                <input type="tel" id="add-phone" maxlength="9" name="phoneadd" required>
+            </div>
+
+            <label for="add-document-type">Tipo de Documento:</label>
+            <select id="add-document-type" name="document_typeadd">
+                <option value="">Selecione...</option>
+                <option value="CPF">CPF</option>
+                <option value="CNPJ">CNPJ</option>
+                <option value="Passaporte">Passaporte</option>
+            </select>
+
+            <label for="add-document">Número do Documento:</label>
+            <input type="number" id="add-document" maxlength="14" name="documentadd">
+
+            <label for="add-address">Endereço:</label>
+            <input type="text" maxlength="100" id="add-address" name="addressadd">
+
+            <label for="add-observation">Observação:</label>
+            <textarea maxlength="10000" id="add-observation" name="observationadd"></textarea>
+
+
+
+
+            <button class="btn-add" type="button" onclick="submitRegisterForm(event)">Salvar</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal window : EDIT -->
+<div id="window-edit" class="window hidden">
+    <div class="window-content">
+        <button class="btn-close" onclick="closeWindow()">×</button>
+        <input type="hidden" name="id" id="edit-id">
+        <h2>EDITAR REGISTRO</h2>
+        <form method="POST" action="#" id="edit-form">
+            {% csrf_token %}
+            
+            <label for="edit-category">Categoria:</label>
+            <select id="edit-category" name="category-edit" required>
+                <option value="">Selecione...</option>
+                <option value="Alunos">Alunos</option>
+                <option value="Professores">Professores</option>
+                <option value="Fornecedores">Fornecedores/Prestador de serviço</option>
+            </select>
+
+            <label for="edit-name">Nome:</label>
+            <input type="text" id="edit-name" name="name-edit" required>
+
+            <label for="edit-bd" >Data de Nascimento:</label>
+            <input type="date" id="edit-bd" name="bd-edit" required>
+            
+            <div class="phone-container">
+                <label for="edit-ddd">DDD:</label>
+                <input type="tel" id="edit-ddd" name="ddd-edit" maxlength="2"  required>
+                
+                <label for="edit-phone">Telefone:</label>
+                <input type="tel" id="edit-phone" maxlength="9" name="phone-edit" required>
+            </div>
+
+            <label for="edit-document-type">Tipo de Documento:</label>
+            <select id="edit-document-type" name="document_type-edit">
+                <option value="">Selecione...</option>
+                <option value="CPF">CPF</option>
+                <option value="CNPJ">CNPJ</option>
+                <option value="Passaporte">Passaporte</option>
+            </select>
+
+            <label for="edit-document">Número do Documento:</label>
+            <input type="text" id="edit-document" maxlength="14" name="document-edit">
+
+            <label for="edit-editress">Endereço:</label>
+            <input type="text" id="edit-address" maxlength="100" name="address-edit">
+
+            <label for="edit-observation">Observação:</label>
+            <textarea maxlength="10000" id="edit-observation" name="observation-edit"></textarea>
+
+            <button class="btn-add" type="button" onclick="updateRegisterForm(event)">Salvar</button>
+
+
+        </form>
+    </div>
+</div>
+
+<!-- Modal window : DELETE -->
+<div id="window-delete" class="window hidden">
+    <div class="window-content">
+        <button class="btn-close" onclick="closeWindow()">×</button>
+        
+
+        <h2>Tem certeza que deseja excluir <label class="label-delete" id="delete-name" name"name-delete"></label> do Registro?</h2><br>
+
+        <form method="POST" action="#" id="delete-form">
+            {% csrf_token %}
+            <input type="hidden" name="id" id="delete-id">
+            <input type="hidden" name="confirm_text" id="confirm-text">
+            <button class="btn-delete-confirm" type="button" onclick="deleteRegister(event)">Sim, Excluir</button>
+        </form>
+    </div>
+</div>
