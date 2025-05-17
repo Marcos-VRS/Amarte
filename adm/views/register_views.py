@@ -1,10 +1,12 @@
 # adm/views.py
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 import json
 from adm.utils import *
 
 
+@login_required(login_url="adm:login")
 @require_POST
 def add_register_view(request):
     try:
@@ -15,6 +17,7 @@ def add_register_view(request):
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
 
+@login_required(login_url="adm:login")
 def get_register_view(request, id):
     try:
         register = get_register(id)
@@ -41,6 +44,7 @@ def get_register_view(request, id):
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
 
+@login_required(login_url="adm:login")
 @require_POST
 def update_register_view(request, id):
     try:
@@ -51,6 +55,7 @@ def update_register_view(request, id):
         return JsonResponse({"status": "error", "message": str(e)}, status=400)
 
 
+@login_required(login_url="adm:login")
 @require_POST
 def delete_register_view(request, id):
     try:

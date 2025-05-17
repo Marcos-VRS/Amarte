@@ -6,7 +6,8 @@ from django.conf.urls.static import static
 app_name = "adm"
 
 urlpatterns = [
-    # login
+    # login/logout
+    path("logout/", views.logout_view, name="logout"),
     path("login/", views.login_view, name="login"),
     # Index
     path("", views.index, name="index"),
