@@ -20,23 +20,21 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "adm",
-    "social_django",  # Apenas social-auth-app-django
+    "social_django",
 ]
 
 AUTHENTICATION_BACKENDS = (
-    "social_core.backends.google.GoogleOAuth2",  # Backend do Google
-    "django.contrib.auth.backends.ModelBackend",  # Backend padrão do Django
+    "social_core.backends.google.GoogleOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
 )
 
 
-# Requisição de escopos adicionais (Google Calendar, etc)
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     "https://www.googleapis.com/auth/userinfo.email",
     "https://www.googleapis.com/auth/userinfo.profile",
     "https://www.googleapis.com/auth/calendar",
 ]
 
-# Salvar tokens para uso futuro
 SOCIAL_AUTH_GOOGLE_OAUTH2_EXTRA_DATA = [
     "access_token",
     "refresh_token",
@@ -73,8 +71,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "social_django.context_processors.backends",  # Necessário para social-auth
-                "social_django.context_processors.login_redirect",  # Necessário para social-auth
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -82,7 +80,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-# Banco de dados
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -90,7 +87,7 @@ DATABASES = {
     }
 }
 
-# Validações de senha
+# PASSWORD VALIDATORS
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
@@ -100,13 +97,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# Internacionalização
+
 LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "America/Sao_Paulo"
 USE_I18N = True
 USE_TZ = True
 
-# Arquivos estáticos
+# STATIC FILES
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "base_static"]
 STATIC_ROOT = BASE_DIR / "static"
@@ -116,7 +113,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Configurações locais (opcional)
 try:
     from project.local_settings import *
 except ImportError:
